@@ -79,20 +79,26 @@ Linux下代码所需改动主要有
 1）使用条件编译移除对stdafx.h的引用
 
 <------------------
-\#include "stdafx.h"
+```
+#include "stdafx.h"
+```
 ------------------>
+```
 #ifndef __GNU__
 #include "stdafx.h"
 #endif
-
+```
 
 2) 使用GNU C的strncpy替代MSVC的strcpy_s函数
 
 <------------------
+
 ------------------>
-\#ifdef __GNU__
-\#define strcpy_s(dest, len, src)  strncpy(dest, src, len)
-\#endif
+```
+#ifdef __GNU__
+#define strcpy_s(dest, len, src)  strncpy(dest, src, len)
+#endif
+```
 
 3）demoMain 文件中取消不必要的 windows 函数调用
 
