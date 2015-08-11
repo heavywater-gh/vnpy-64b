@@ -65,10 +65,11 @@ eventEngine：包含事件驱动引擎实现
 
 如需在Linux下编译运行，请在bashrc中设置环境变量 LD_LIBRARY_PATH 以及 PYTHON_PATH， 例如：
 
+```
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/user/vnpy/vn.lts/vnltsmd/pyltsmd:/home/user/vnpy/vn.lts/ltsapi:/home/user/vnpy/vn.lts/ltsl2:/home/user/vnpy/vn.ctp/ctpapi
 
 export PYTHON_PATH=$PYTHON_PATH:/home/user/vnpy/vn.lts/vnltsmd/pyltsmd:/home/user/vnpy/vn.lts/ltsapi:/home/user/vnpy/vn.lts/ltsl2:/home/user/vnpy/vn.ctp/ctpapi
-
+```
 
 然后cd至vnpy项目根目录并使用make
 vnpy$ make all
