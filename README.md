@@ -80,7 +80,7 @@ Linux下代码所需改动主要有
 
 <------------------
 #include "stdafx.h"
->------------------
+------------------>
 #ifndef __GNU__
 #include "stdafx.h"
 #endif
@@ -89,7 +89,7 @@ Linux下代码所需改动主要有
 2) 使用GNU C的strncpy替代MSVC的strcpy_s函数
 
 <------------------
->------------------
+------------------>
 #ifdef __GNU__
 #define strcpy_s(dest, len, src)  strncpy(dest, src, len)
 #endif
