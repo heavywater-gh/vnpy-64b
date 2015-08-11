@@ -1,7 +1,10 @@
 // MdApi.cpp : 定义 DLL 应用程序的导出函数。
 //
 
+#ifndef __GNU__
 #include "stdafx.h"
+#endif
+
 #include "vnltsmd.h"
 
 

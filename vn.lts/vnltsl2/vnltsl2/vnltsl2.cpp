@@ -1,7 +1,9 @@
 // vnltsl2.cpp : 定义 DLL 应用程序的导出函数。
 //
 
+#ifndef __GNU__
 #include "stdafx.h"
+#endif
 #include "vnltsl2.h"
 
 

@@ -1,7 +1,9 @@
 //说明部分
 
 //系统
+#ifndef __GNU__
 #include "stdafx.h"
+#endif
 #include <string>
 #include <queue>
 
@@ -65,6 +67,9 @@ using namespace boost;
 #define ONRTNFUNDINTERTRANSFERSERIAL 38
 #define ONERRRTNFUNDINTERTRANSFER 39
 
+#ifdef __GNU__
+#define strcpy_s(dest, len, src)  strncpy(dest, src, len)
+#endif
 
 ///-------------------------------------------------------------------------------------
 ///API中的部分组件

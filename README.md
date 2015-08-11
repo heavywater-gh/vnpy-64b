@@ -57,6 +57,51 @@ eventEngine：包含事件驱动引擎实现
 ## 联系作者 ##
 作者知乎名：用python的trader，想要联系作者可以通过知乎私信。
 
+## 关于Linux下编译运行的说明 ##
+
+知乎：@家俊桑
+
+已初步验证vnpy仅需少量跨平台兼容性修改，再加上华宝的Linux动态链接库文件即可在Linux上编译运行 (仅在Ubuntu x64下测试)
+
+如需在Linux下编译运行，请在bashrc中设置环境变量 LD_LIBRARY_PATH 以及 PYTHON_PATH， 例如：
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/user/vnpy/vn.lts/vnltsmd/pyltsmd:/home/user/vnpy/vn.lts/ltsapi:/home/user/vnpy/vn.lts/ltsl2:/home/user/vnpy/vn.ctp/ctpapi
+
+export PYTHON_PATH=$PYTHON_PATH:/home/user/vnpy/vn.lts/vnltsmd/pyltsmd:/home/user/vnpy/vn.lts/ltsapi:/home/user/vnpy/vn.lts/ltsl2:/home/user/vnpy/vn.ctp/ctpapi
+
+
+然后cd至vnpy项目根目录并使用make
+vnpy$ make all
+
+ctp及lts api的封装库将以.so的形式被创建，并会被自动拷贝至demo和strategy目录
+
+Linux下代码所需改动主要有
+1）使用条件编译移除对stdafx.h的引用
+
+<------------------
+#include "stdafx.h"
+>------------------
+#ifndef __GNU__
+#include "stdafx.h"
+#endif
+
+
+2) 使用GNU C的strncpy替代MSVC的strcpy_s函数
+
+<------------------
+>------------------
+#ifdef __GNU__
+#define strcpy_s(dest, len, src)  strncpy(dest, src, len)
+#endif
+
+3）demoMain 文件中取消不必要的 windows 函数调用
+
+
+因为数据和帐号原因，Linux版本并未得到完整测试，权当抛砖引玉
+
+如果在Linux 32位上运行，需要去华宝下载32位的动态链接库
+http://www.sfit.com.cn/5_2_DocumentDown.htm
+
 ## License ##
 MIT
 

@@ -1,7 +1,12 @@
 //说明部分
 
 //系统
+
+#ifndef __GNU__
 #include "stdafx.h"
+#else
+#define _T(x) x
+#endif
 #include <string>
 #include <queue>
 
@@ -35,6 +40,11 @@ using namespace boost;
 #define ONRSPUNSUBMARKETDATA 7
 #define ONRTNDEPTHMARKETDATA 8
 #define EXIT 0
+
+
+#ifdef __GNU__
+#define strcpy_s(dest, len, src)  strncpy(dest, src, len)
+#endif
 
 
 ///-------------------------------------------------------------------------------------
