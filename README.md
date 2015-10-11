@@ -1,7 +1,21 @@
-forked from Jiajun-Liu/vnpy
+
+
 修改了家俊桑之前的make脚本:
+
 ********************之前**************************
+
 $(CXX) $(COMMON_FLAGS) -shared -Wl,-soname,vnctpmd.so -o vnctpmd.so vnctpmd.o -L$(ROOTPATH)/vn.ctp/ctpapi  $(LIBRARIES) -l:thostmduserapi.so -l:thosttraderapi.so
+
+********************之后**************************
+$(CXX) $(COMMON_FLAGS) -shared -Wl,-soname,vnctpmd.so -o vnctpmd.so vnctpmd.o -L/usr/local/lib  $(LIBRARIES) -l:thostmduserapi.so -l:thosttraderapi.so
+
+之前的做法会导致在迁移环境时必需要重建与编译环境完全相同的目录。改了之后只需把需要的库拷贝到/usr/local/lib中。
+
+具体的问题我也不太清楚，似乎python会从so文件中获得它编译时依赖的库的路径，然后要求相同的路径。是python的bug吗？请知道的同学不吝赐教。
+
+
+
+以下是@家俊桑原来的readme
 ## 关于Linux下编译运行的说明 ##
 
 知乎：@家俊桑
